@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+
+# PyTorch / TensorFlow / Hugging Face caches
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.onnx
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VSCode / IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+
+# Model info folder
+webapp/model_1_info/
+webapp/weights/
+
+# macOS
+.DS_Store
+
+# Other caches
+*.cache
