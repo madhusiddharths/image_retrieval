@@ -39,7 +39,8 @@ logs/
 
 # Model info folder
 webapp/model_1_info/
-webapp/weights/
+webapp/weights/*
+!webapp/weights/model.pth
 
 # macOS
 .DS_Store
