@@ -2,6 +2,12 @@ import os
 # Set OpenMP environment variable before importing any libraries that use it
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
+# --- Add this block ---
+# Ensure Git LFS files (like model.pth) are pulled on deployment
+os.system("git lfs install")
+os.system("git lfs pull")
+# -----------------------
+
 import streamlit as st
 import torch
 import json
