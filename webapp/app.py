@@ -4,8 +4,12 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 
 # --- Add this block ---
 # Ensure Git LFS files (like model.pth) are pulled on deployment
-os.system("git lfs install")
-os.system("git lfs pull")
+# Only run if model file is missing or looks like a pointer file (< 1KB)
+model_path_check = "weights/model.pth"
+if not os.path.exists(model_path_check) or os.path.getsize(model_path_check) < 1024:
+    print("Pulling LFS files...")
+    os.system("git lfs install")
+    os.system("git lfs pull")
 # -----------------------
 
 import streamlit as st

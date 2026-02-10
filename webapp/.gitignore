@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Large files (optional, if using LFS, keep them, but if not using LFS, might want to ignore)
+# We assume we want to commit everything for this demo unless it's huge.
+# If you use Git LFS, these should NOT be ignored here.
+
