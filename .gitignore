@@ -19,7 +19,6 @@ build/
 
 # PyTorch / TensorFlow / Hugging Face caches
 *.pt
-*.pth
 *.ckpt
 *.h5
 *.onnx
@@ -38,12 +37,13 @@ logs/
 *.log
 
 # Model info folder
-webapp/model_1_info/
-webapp/weights/*
-!webapp/weights/model.pth
+model_1_info/
+weights/*
+!weights/model.pth
 
 # macOS
 .DS_Store
 
 # Other caches
 *.cache
+.streamlit/

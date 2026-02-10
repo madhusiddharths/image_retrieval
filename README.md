@@ -11,17 +11,19 @@ A compact image retrieval demo built with Streamlit. This repository contains th
 - Simple pipeline for adding new images and reindexing
 
 ## Quick Links
-- App entry: `src/streamlit_app.py`
-- Port (default): `8501` (configured for Docker in metadata)
-- SDK: Docker
+- App entry: `app.py`
+- Port (default): `8501`
+- Run: `streamlit run app.py`
 
 ## Repository layout
-- src/ - Streamlit app and main application code
-- notebooks/ - exploratory notebooks (if present)
-- data/ - raw and processed image assets (not included)
-- models/ - pretrained models or checkpoints (optional)
-- scripts/ - indexing, embedding, and utility scripts
-- README.md - this file
+- `app.py` - Main Streamlit application
+- `src/` - Model and core application code
+- `utils/` - Utility modules for data processing, image handling, and feature computation
+- `data/` - Precomputed features and FAISS index
+- `weights/` - Pretrained model weights
+- `caltech101/` - Dataset directory
+- `requirements.txt` - Python dependencies
+- `Procfile` - Deployment configuration for Streamlit Cloud/Heroku
 
 ## Prerequisites
 - Python 3.8+
@@ -35,39 +37,30 @@ A compact image retrieval demo built with Streamlit. This repository contains th
    - .venv\Scripts\activate     # Windows
 
 2. Install dependencies:
-   - pip install -r requirements.txt
-   (If requirements.txt is not present, install packages used by your app, e.g., streamlit, torch, torchvision, faiss-cpu, pillow, numpy.)
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 3. Run the Streamlit app:
-   - streamlit run src/streamlit_app.py --server.port 8501
+   ```bash
+   streamlit run app.py
+   ```
 
 Open http://localhost:8501 in your browser.
 
-## Docker (optional)
-Build:
-- docker build -t image-retrieval:latest .
+## Deployment
 
-Run:
-- docker run -p 8501:8501 image-retrieval:latest
+### Streamlit Cloud
+1. Push to GitHub
+2. Go to [streamlit.io/cloud](https://streamlit.io/cloud)
+3. Create a new app and point to this repository and `app.py`
+4. Set up any required secrets in the app settings
 
-Adjust Dockerfile and port mapping to match your environment.
+### GitHub Pages / Other Platforms
+Refer to platform-specific documentation for deploying Streamlit applications.
 
-## Data and Indexing
-1. Place images in a `data/images/` directory (or point scripts to your dataset).
-
-2. Run the precompute script to compute embeddings and build an index (required before starting the app):
-   - Make the script executable:
-     - chmod +x scripts/precompute.sh
-   - Run the script (example):
-     - ./scripts/precompute.sh --images data/images --out models/index.faiss
-   Note: some repositories may name the script `scripts/precoumpute.sh`; if so, use that name instead.
-
-3. (Optional) Compute embeddings manually:
-   - Use the provided script (e.g., `scripts/compute_embeddings.py`) to convert images to vectors.
-
-4. Build or verify the similarity index:
-   - If the precompute script does not build the index, run:
-     - python scripts/build_index.py --embeddings <path> --index_out <path>
-
-5. Point the Streamlit app to the index and image folder (via config or environment variables).
+## Notes
+- The app precomputes features and builds a FAISS index on startup
+- Model weights are managed via Git LFS (Git Large File Storage)
+- Ensure all required dependencies are installed before running
 
